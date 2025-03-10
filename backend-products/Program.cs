@@ -41,6 +41,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // app.UseHttpsRedirection();
+app.UseCors("PermitirTodos");  // Aplica la política de CORS
 
 
 app.MapControllers();

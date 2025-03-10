@@ -17,7 +17,6 @@ namespace backend_products.src.controllers
         //Inyectamos el servicio en el controlador
         private readonly IProductoService _productoService;
 
-
         public Productos(IProductoService productoService)
         {
             _productoService = productoService;
@@ -25,10 +24,8 @@ namespace backend_products.src.controllers
         }
 
         [HttpPost("save")]
-
         public async Task<ActionResult> CrearProducto([FromBody] Producto producto)
         {
-
             try
             {
                 var productoCreado = await _productoService.CrearProducto(producto);
@@ -42,7 +39,6 @@ namespace backend_products.src.controllers
             }
             catch (System.Exception)
             {
-
                 throw;
             }
 
