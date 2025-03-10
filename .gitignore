@@ -1,0 +1,32 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de usuario de Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# Archivos de configuración específicos
+appsettings.json
+appsettings.Development.json
+
+# Archivos de paquetes NuGet
+packages/
+*.nupkg
+
+# Archivos de resultados de pruebas
+TestResults/
+
+# Archivos generados por dotnet
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos temporales
+*.tmp
