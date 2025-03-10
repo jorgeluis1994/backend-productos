@@ -61,6 +61,25 @@ namespace backend_products.src.controllers
                 throw;
             }
         }
+        
+        
+        [HttpDelete("{id}")]
+         public async Task<ActionResult> EliminarProducto(int id)
+        {
+            try
+            {
+                var producto = await _productoService.EliminarProducto(id);
+                return Ok(new { Status = "Success", Message = "Producto eliminado con éxito", Success = true });
+
+            }
+            catch (System.Exception ex)
+            {
+
+                return StatusCode(500, "Ocurrió un error al eliminar el producto.");
+            }
+        }
+        
+
 
     }
 }
