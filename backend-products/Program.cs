@@ -29,6 +29,10 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 //incorporamos el servico con su implementacion
 builder.Services.AddScoped<IProductoService ,ProductoService>();
 
+//servico de transacciones
+builder.Services.AddScoped<ITransaccionService ,TransaccionService>();
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTodos", builder =>

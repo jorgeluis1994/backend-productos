@@ -61,10 +61,10 @@ namespace backend_products.src.controllers
                 throw;
             }
         }
-        
-        
+
+
         [HttpDelete("{id}")]
-         public async Task<ActionResult> EliminarProducto(int id)
+        public async Task<ActionResult> EliminarProducto(int id)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace backend_products.src.controllers
                 return StatusCode(500, "Ocurrió un error al eliminar el producto.");
             }
         }
-        
+
 
 
     }
