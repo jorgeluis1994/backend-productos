@@ -15,17 +15,17 @@ namespace backend_products.src.services.imp
 
         public ProductoService(AplicationDbContext dbContext)
         {
-            _dbContext=dbContext;
-            
+            _dbContext = dbContext;
+
         }
         public async Task<bool> ActualizarProducto(int id, Producto producto)
         {
             try
             {
-                var existeProducto=await _dbContext.Productos.FindAsync(id);
-                if(existeProducto==null) return false;
-                existeProducto.Nombre=producto.Nombre;
-                existeProducto.Precio=producto.Precio;
+                var existeProducto = await _dbContext.Productos.FindAsync(id);
+                if (existeProducto == null) return false;
+                existeProducto.Nombre = producto.Nombre;
+                existeProducto.Precio = producto.Precio;
 
                 await _dbContext.SaveChangesAsync();
 
@@ -35,7 +35,7 @@ namespace backend_products.src.services.imp
             }
             catch (System.Exception)
             {
-                
+
                 throw;
             }
         }
@@ -53,8 +53,8 @@ namespace backend_products.src.services.imp
             }
             catch (System.Exception ex)
             {
-                
-                throw new Exception("Error al crear  producto",ex);
+
+                throw new Exception("Error al crear  producto", ex);
             }
         }
 
@@ -63,22 +63,31 @@ namespace backend_products.src.services.imp
             try
             {
                 var producto = await _dbContext.Productos.FindAsync(id);
-                if(producto==null) return false;
+                if (producto == null) return false;
                 _dbContext.Productos.Remove(producto);
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
-            catch (System.Exception ex )
+            catch (System.Exception ex)
             {
-                
-                throw new Exception("Error al eliminar producto",ex);
+
+                throw new Exception("Error al eliminar producto", ex);
             }
         }
 
-        public Task<Producto> ObtenerProductoId(int id)
+        public async Task<Producto> ObtenerProductoId(int id)
         {
-            throw new NotImplementedException();
+            
+            var producto = await _dbContext.Productos.FindAsync(id);
+
+            if (producto == null)
+            {
+                throw new KeyNotFoundException("Producto no encontrado.");
+            }
+
+            return producto;
         }
+
 
         public async Task<IEnumerable<Producto>> ObtenerProductos()
         {
@@ -88,8 +97,8 @@ namespace backend_products.src.services.imp
             }
             catch (System.Exception ex)
             {
-                
-                throw new Exception("Error al obtener los productos",ex);
+
+                throw new Exception("Error al obtener los productos", ex);
             }
         }
     }

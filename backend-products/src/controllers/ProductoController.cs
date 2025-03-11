@@ -61,6 +61,24 @@ namespace backend_products.src.controllers
                 throw;
             }
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult> ObtenerProductoPorId(int id)
+        {
+            try
+            {
+                var producto = await _productoService.ObtenerProductoId(id);
+                return Ok(new { Status = "Success", Message = "Producto encontrado", Data = producto });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { Status = "Error", Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Status = "Error", Message = "Ocurrió un error al obtener el producto.", Details = ex.Message });
+            }
+        }
+
 
 
         [HttpDelete("{id}")]
@@ -81,14 +99,15 @@ namespace backend_products.src.controllers
 
         [HttpPut("{id}")]
 
-        public async Task<ActionResult<Boolean>> ActualizarProducto(int id, [FromBody] Producto producto){
+        public async Task<ActionResult<Boolean>> ActualizarProducto(int id, [FromBody] Producto producto)
+        {
             try
             {
-                return await _productoService.ActualizarProducto(id,producto);
+                return await _productoService.ActualizarProducto(id, producto);
             }
             catch (System.Exception)
             {
-                
+
                 throw;
             }
 
