@@ -81,6 +81,20 @@ namespace backend_products.src.controllers
                 return StatusCode(500, new { Status = "Error", Message = "Ocurrió un error al eliminar la transacción.", Success = false });
             }
         }
+        [HttpPut("{id}")]
+
+        public async Task<ActionResult<Boolean>> ActualizarTransaccion(int id, [FromBody] Transaccion transaccion){
+            try
+            {
+                return await _transaccionService.ActualizarTransaccion(id,transaccion);
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+
+        }
 
 
     }
