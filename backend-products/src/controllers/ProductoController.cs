@@ -79,6 +79,21 @@ namespace backend_products.src.controllers
             }
         }
 
+        [HttpPut("{id}")]
+
+        public async Task<ActionResult<Boolean>> ActualizarProducto(int id, [FromBody] Producto producto){
+            try
+            {
+                return await _productoService.ActualizarProducto(id,producto);
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+
+        }
+
 
 
     }
