@@ -11,13 +11,13 @@ namespace backend_products.src.controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Productos : ControllerBase
+    public class ProductoController : ControllerBase
     {
 
         //Inyectamos el servicio en el controlador
         private readonly IProductoService _productoService;
 
-        public Productos(IProductoService productoService)
+        public ProductoController(IProductoService productoService)
         {
             _productoService = productoService;
 

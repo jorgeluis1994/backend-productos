@@ -14,8 +14,6 @@ namespace backend_products.src.models
 
         public int ProductoId { set; get; }
 
-        public Producto Producto { set; get; }
-
         public int Cantidad { set; get; }
 
         public decimal PrecioUnitario { set; get; }

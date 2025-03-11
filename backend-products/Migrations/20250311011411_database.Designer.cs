@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace backend_products.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20250311005227_NombreDeLaMigracion2")]
-    partial class NombreDeLaMigracion2
+    [Migration("20250311011411_database")]
+    partial class database
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,20 +92,7 @@ namespace backend_products.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductoId");
-
                     b.ToTable("Transacciones");
-                });
-
-            modelBuilder.Entity("backend_products.src.models.Transaccion", b =>
-                {
-                    b.HasOne("backend_products.src.models.Producto", "Producto")
-                        .WithMany()
-                        .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Producto");
                 });
 #pragma warning restore 612, 618
         }

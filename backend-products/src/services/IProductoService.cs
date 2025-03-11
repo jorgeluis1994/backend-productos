@@ -18,8 +18,5 @@ namespace backend_products.src.services
 
         Task<Boolean> EliminarProducto(int id);
 
-
-
-
     }
 }

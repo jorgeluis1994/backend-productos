@@ -8,17 +8,17 @@ namespace backend_products.src.models
     public class Producto
     {
         public int Id { set; get; }
-    public string Nombre { set; get; }
+        public string Nombre { set; get; }
 
-    public string Descripcion { set; get; }
+        public string Descripcion { set; get; }
 
-    public string Categoria { set; get; }
+        public string Categoria { set; get; }
 
-    public string Imagen { set; get; }
+        public string Imagen { set; get; }
 
-    public decimal Precio { set; get; }
+        public decimal Precio { set; get; }
 
-    public int Stock { set; get; }
-        
+        public int Stock { set; get; }
+
     }
 }
