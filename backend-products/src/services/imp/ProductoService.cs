@@ -26,6 +26,9 @@ namespace backend_products.src.services.imp
                 if (existeProducto == null) return false;
                 existeProducto.Nombre = producto.Nombre;
                 existeProducto.Precio = producto.Precio;
+                existeProducto.Categoria = producto.Categoria;
+                existeProducto.Imagen = producto.Imagen;
+                existeProducto.Descripcion = producto.Descripcion;
 
                 await _dbContext.SaveChangesAsync();
 
