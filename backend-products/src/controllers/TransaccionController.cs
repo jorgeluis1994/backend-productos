@@ -36,6 +36,27 @@ namespace backend_products.src.controllers
                 throw;
             }
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult> ObtenerTransaccionPorId(int id)
+        {
+            try
+            {
+                // Obtener la transacción por su id
+                var transaccion = await _transaccionService.ObtenerTransaccionPorId(id);
+
+                if (transaccion == null)
+                {
+                    return NotFound(new { Status = "Error", Message = "Transacción no encontrada", Success = false });
+                }
+
+                return Ok(new { Status = "Success", Message = "Transacción obtenida con éxito", Success = true, Data = transaccion });
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(500, new { Status = "Error", Message = "Ocurrió un error al obtener la transacción.", Details = ex.Message });
+            }
+        }
+
 
         [HttpPost("save")]
         public async Task<ActionResult> CrearProducto([FromBody] Transaccion transaccion)
@@ -83,14 +104,15 @@ namespace backend_products.src.controllers
         }
         [HttpPut("{id}")]
 
-        public async Task<ActionResult<Boolean>> ActualizarTransaccion(int id, [FromBody] Transaccion transaccion){
+        public async Task<ActionResult<Boolean>> ActualizarTransaccion(int id, [FromBody] Transaccion transaccion)
+        {
             try
             {
-                return await _transaccionService.ActualizarTransaccion(id,transaccion);
+                return await _transaccionService.ActualizarTransaccion(id, transaccion);
             }
             catch (System.Exception)
             {
-                
+
                 throw;
             }
 

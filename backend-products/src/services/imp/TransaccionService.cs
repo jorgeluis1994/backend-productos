@@ -17,9 +17,31 @@ namespace backend_products.src.services.imp
             _dbContext = dbContext;
 
         }
-        public Task<bool> ActualizarTransaccion(int id, Transaccion transaccion)
+        public async Task<bool> ActualizarTransaccion(int id, Transaccion transaccion)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Verificar si la transacción existe
+                var transaccionExistente = await _dbContext.Transacciones.FindAsync(id);
+                if (transaccionExistente == null)
+                {
+                    return false;
+                }
+
+                
+                transaccionExistente.Cantidad = transaccion.Cantidad;
+                transaccionExistente.Detalle = transaccion.Detalle;
+
+                
+                await _dbContext.SaveChangesAsync();
+
+            
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception("Ocurrió un error al actualizar la transacción.", ex);
+            }
         }
 
         public async Task<Transaccion> CrearTransaccion(Transaccion transaccion)
